@@ -39,7 +39,7 @@ public class Server implements Runnable {
             serverSocketChannel.register(selector, SelectionKey.OP_ACCEPT);
             int interestSet = SelectionKey.OP_READ | SelectionKey.OP_WRITE;
             while (true) {
-                int readyChannels = selector.selectNow();
+                int readyChannels = selector.select();
                 if (readyChannels > 0) {
                     Set<SelectionKey> selectedKeys = selector.selectedKeys();
                     Iterator<SelectionKey> keyIterator = selectedKeys.iterator();
